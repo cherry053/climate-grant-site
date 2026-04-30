@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Youth Climate Grant — A Story</title>
+  <meta name="description" content="A cinematic story about unequal access to climate action — and how we change it nationally." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- Black curtain lifted by JS for cinematic entrance -->
+<div id="curtain"></div>
+
+<!-- Fixed back button shown when a perspective story is active -->
+<!-- JS shows/hides this via display:flex / display:none -->
+<button class="story-back-btn" id="story-back-btn" aria-label="Return to both perspectives">
+  ← Both perspectives
+</button>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════ -->
+<nav class="nav" role="navigation">
+  <a href="index.html" class="nav__logo">
+    <span class="nav__dot"></span>
+    Youth Climate Grant
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="problem.html">Problem</a></li>
+    <li><a href="solution.html">Solution</a></li>
+    <li><a href="impact.html">Impact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     SCENE 1 — LIVED REALITY
+     rural.jpg. Ken Burns zoom. Warm overlay.
+     Opens with them, not with the policy.
+═══════════════════════════════════════════ -->
+<section class="scene" aria-label="Lived Reality">
+  <div class="scene__bg scene__bg--kb"
+       data-parallax="0.28"
+       style="background-image: url('assets/rural.jpg'); background-position: center 55%;">
+  </div>
+  <div class="ink ink--base"></div>
+  <div class="ink ink--warm"></div>
+  <div class="ink ink--bottom"></div>
+  <div class="ink ink--vignette"></div>
+
+  <div class="scene__body">
+    <span class="eyebrow fade-up">A National Story</span>
+    <h1 class="display fade-up d1">
+      They already<br/>understand<br/>climate change.
+    </h1>
+    <p class="caption fade-up d2">
+      But not everyone can act on that understanding.
+    </p>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">Scroll</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SCENE 2 — INTERACTIVE PERSPECTIVES
+     Split panel click interaction.
+     Left: farmer.jpg (Rural) / Right: students.jpg (Urban)
+     Clicking a panel expands it and reveals that perspective's story below.
+═══════════════════════════════════════════ -->
+<section id="perspectives">
+
+  <!-- ── Split panels ── -->
+  <div class="split-view" role="group" aria-label="Select a perspective to explore">
+
+    <!-- Rural panel -->
+    <!-- data-perspective is read by JS to know which story to show -->
+    <div class="panel"
+         id="panel-rural"
+         data-perspective="rural"
+         role="button"
+         tabindex="0"
+         aria-label="Explore the rural youth perspective">
+
+      <div class="panel__bg"
+           style="background-image: url('assets/farmer.jpg'); background-position: center 28%;">
+      </div>
+      <div class="panel__ink"></div>
+      <div class="panel__ink ink--bottom"></div>
+
+      <div class="panel__copy">
+        <span class="panel__tag panel__tag--amber">Rural</span>
+        <h2 class="panel__title">Driven.<br/>Capable.<br/>Stranded.</h2>
+        <p class="panel__sub">Living the consequences. Locked out of the response.</p>
+        <span class="panel__cta" aria-hidden="true">Explore this perspective →</span>
+      </div>
+    </div>
+
+    <!-- Urban panel -->
+    <div class="panel"
+         id="panel-urban"
+         data-perspective="urban"
+         role="button"
+         tabindex="0"
+         aria-label="Explore the urban youth perspective">
+
+      <div class="panel__bg"
+           style="background-image: url('assets/students.jpg'); background-position: center 38%;">
+      </div>
+      <div class="panel__ink"></div>
+      <div class="panel__ink ink--bottom"></div>
+
+      <div class="panel__copy">
+        <span class="panel__tag panel__tag--blue">Urban</span>
+        <h2 class="panel__title">Driven.<br/>Capable.<br/>Supported.</h2>
+        <p class="panel__sub">Same generation. A very different system behind them.</p>
+        <span class="panel__cta" aria-hidden="true">Explore this perspective →</span>
+      </div>
+    </div>
+
+    <!-- Vertical divider (collapses when a panel is selected) -->
+    <div class="panel-divider" aria-hidden="true"></div>
+
+    <!-- Instruction hint below panels -->
+    <div class="split-hint" aria-hidden="true">↑ Click a perspective to explore ↑</div>
+
+  </div><!-- end .split-view -->
+
+
+  <!-- ══════════════════════════════════════
+       RURAL STORY
+       Hidden. Shown by JS when rural panel is clicked.
+       Three scenes: lived reality → barriers → consequence.
+  ══════════════════════════════════════ -->
+  <div id="story-rural" class="p-story" aria-label="Rural youth perspective story">
+
+    <!-- Scene A: They live it every day -->
+    <div class="p-scene">
+      <div class="p-scene__bg ink"
+           style="position:absolute; inset:-18%; background-image:url('assets/farmer.jpg');
+                  background-size:cover; background-position:center 28%;">
+      </div>
+      <div class="ink ink--deep" style="position:absolute;inset:0;"></div>
+      <div class="ink ink--bottom" style="position:absolute;inset:0;"></div>
+
+      <div class="p-scene__body">
+        <span class="eyebrow eyebrow--amber fade-up">Rural Youth</span>
+        <p class="p-line fade-up d1">They live climate change every day.</p>
+        <p class="p-line p-line--italic fade-up d2">
+          Farming. Drought. Uncertainty.
+        </p>
+        <p class="p-line p-line--italic fade-up d3" style="font-size:clamp(1rem,2vw,1.6rem); margin-top:1rem;">
+          They don't need to be convinced.<br/>They're already convinced.
+        </p>
+      </div>
+    </div>
+
+    <!-- Scene B: But when it comes to action... -->
+    <div class="p-scene p-scene--dark">
+      <div class="p-scene__body p-scene__body--center">
+        <span class="eyebrow fade-up" style="display:block; margin-bottom:2rem;">But when it comes to action...</span>
+        <!-- Word reveal — JS fires each .word-item with 280ms stagger -->
+        <div class="word-stack">
+          <span class="word-item">No funding.</span>
+          <span class="word-item">No transport.</span>
+          <span class="word-item">No access.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene C: The consequence -->
+    <div class="p-scene p-scene--consequence">
+      <p class="p-line fade-up" style="font-size:clamp(2.5rem,6vw,7rem); color:rgba(255,255,255,0.45);">
+        Ideas that never
+      </p>
+      <p class="p-line fade-up d2" style="font-size:clamp(2.5rem,6vw,7rem);">
+        leave the ground.
+      </p>
+    </div>
+
+    <!-- Continue button — reveals shared insight below -->
+    <div class="story-continue" style="background:#050505;">
+      <p>The other side of the story</p>
+      <button class="btn btn--ghost story-continue-btn">
+        Continue →
+      </button>
+    </div>
+
+  </div><!-- end #story-rural -->
+
+
+  <!-- ══════════════════════════════════════
+       URBAN STORY
+       Hidden. Shown by JS when urban panel is clicked.
+  ══════════════════════════════════════ -->
+  <div id="story-urban" class="p-story" aria-label="Urban youth perspective story">
+
+    <!-- Scene A: Climate action is everywhere -->
+    <div class="p-scene">
+      <div class="p-scene__bg"
+           style="position:absolute; inset:-18%; background-image:url('assets/students.jpg');
+                  background-size:cover; background-position:center 35%;">
+      </div>
+      <div class="ink ink--base" style="position:absolute;inset:0;"></div>
+      <div class="ink ink--bottom" style="position:absolute;inset:0;"></div>
+
+      <div class="p-scene__body">
+        <span class="eyebrow eyebrow--blue fade-up">Urban Youth</span>
+        <p class="p-line fade-up d1">Climate action is everywhere.</p>
+        <p class="p-line p-line--italic fade-up d2">
+          Campaigns. Events. Opportunities.
+        </p>
+        <p class="p-line p-line--italic fade-up d3" style="font-size:clamp(1rem,2vw,1.6rem); margin-top:1rem;">
+          The infrastructure is already there.
+        </p>
+      </div>
+    </div>
+
+    <!-- Scene B: Support exists -->
+    <div class="p-scene p-scene--dark">
+      <div class="p-scene__body p-scene__body--center">
+        <span class="eyebrow eyebrow--blue fade-up" style="display:block; margin-bottom:2rem;">What's available</span>
+        <div class="word-stack">
+          <span class="word-item" style="color:rgba(255,255,255,0.4);">Funding is available.</span>
+          <span class="word-item" style="color:rgba(255,255,255,0.7);">Networks exist.</span>
+          <span class="word-item" style="color:#5ac8fa;">Ideas get supported.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene C: Action becomes possible -->
+    <div class="p-scene p-scene--consequence" style="background:#040d04;">
+      <p class="p-line fade-up" style="font-size:clamp(2.5rem,6vw,7rem); color:var(--green);">
+        Action becomes possible.
+      </p>
+    </div>
+
+    <!-- Continue button -->
+    <div class="story-continue" style="background:#040d04;">
+      <p>Now see the other side</p>
+      <button class="btn btn--ghost story-continue-btn">
+        Continue →
+      </button>
+    </div>
+
+  </div><!-- end #story-urban -->
+
+
+  <!-- ══════════════════════════════════════
+       SHARED INSIGHT
+       Hidden. Shown after either story's "Continue" is clicked.
+       The emotional pivot of the whole homepage.
+  ══════════════════════════════════════ -->
+  <div id="shared-insight" aria-label="Shared insight">
+
+    <!-- Scene A: Same generation, different access -->
+    <div class="insight-scene">
+      <h2 class="insight-headline insight-headline--dim fade-up">Same generation.</h2>
+      <h2 class="insight-headline insight-headline--white fade-up d2">Different access.</h2>
+    </div>
+
+    <!-- Scene B: The reframe -->
+    <div class="insight-scene insight-scene--reframe">
+      <p class="insight-statement insight-statement--dim fade-up">
+        This is not about awareness.
+      </p>
+      <p class="insight-statement insight-statement--gradient fade-up d2">
+        It is about access.
+      </p>
+    </div>
+
+  </div><!-- end #shared-insight -->
+
+</section><!-- end #perspectives -->
+
+
+<!-- ═══════════════════════════════════════════
+     SCENE 3 — EXISTING SOLUTIONS (but limited)
+     Ground the problem in reality:
+     solutions exist but only in certain places.
+═══════════════════════════════════════════ -->
+<section class="word-scene" aria-label="Existing solutions are limited">
+  <div class="p-scene__body p-scene__body--center">
+    <span class="eyebrow fade-up" style="display:block; margin-bottom:2rem;">What already exists</span>
+    <div class="word-stack">
+      <span class="word-item" style="color:rgba(255,255,255,0.4);">Solutions already exist.</span>
+      <span class="word-item" style="color:rgba(255,255,255,0.7);">But only in certain places.</span>
+      <span class="word-item">Not for everyone.</span>
+    </div>
+  </div>
+</section>
+
+<!-- Context below the word reveal -->
+<div style="background:#060606; padding: 80px 72px; text-align:center;">
+  <div style="max-width:680px; margin:0 auto;">
+    <span class="eyebrow fade-up" style="display:block; margin-bottom:1.25rem; color:rgba(255,255,255,0.4);">
+      An example
+    </span>
+    <p class="fade-up d1" style="font-size:clamp(1.1rem,2vw,1.5rem); font-weight:600; line-height:1.4; margin-bottom:1rem;">
+      The City of Melbourne's Youth Climate Grants work.
+    </p>
+    <p class="fade-up d2" style="font-size:0.95rem; color:rgba(255,255,255,0.45); line-height:1.8;">
+      Youth-led climate projects. Accessible applications. Proven outcomes.
+      But Melbourne is one city. Australia is a continent.
+      Rural youth are not in Melbourne.
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCENE 4 — TRANSITION
+     The pivot. "What if we scaled this?"
+     Breathing glow signals the shift from problem to solution.
+═══════════════════════════════════════════ -->
+<section class="transition-scene" aria-label="Transition: scaling the solution">
+  <div class="transition-scene__glow" aria-hidden="true"></div>
+  <div style="position:relative; z-index:2; text-align:center; padding:0 48px;">
+    <span class="eyebrow fade-up" style="display:block; margin-bottom:2rem;">The question</span>
+    <h2 class="display fade-up d1" style="font-size:clamp(2.8rem,7.5vw,9rem);">
+      What if we<br/>scaled this?
+    </h2>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SCENE 5 — SOLUTION TEASER
+     Clean, hopeful, minimal.
+     The initiative name + CTA to solution.html.
+═══════════════════════════════════════════ -->
+<section class="scene" style="background:var(--ink);" aria-label="Solution Teaser">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%, rgba(52,199,89,0.06), transparent 65%);pointer-events:none;"></div>
+
+  <div class="scene__body scene__body--center" style="position:relative; z-index:2;">
+    <span class="eyebrow fade-up" style="display:block; margin-bottom:2rem;">The Initiative</span>
+
+    <h2 class="display fade-up d1"
+        style="font-size:clamp(2.2rem,6vw,7.5rem); margin-bottom:0.2em;">
+      National Youth<br/>Climate Grant
+    </h2>
+    <h2 class="display display--light fade-up d2"
+        style="font-size:clamp(2.2rem,6vw,7.5rem); color:var(--muted); margin-bottom:3rem;">
+      &amp; Reward System.
+    </h2>
+
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="fade-up d3">
+      <a href="solution.html" class="btn btn--green">See how it works →</a>
+      <a href="problem.html" class="btn btn--ghost">Read the full story</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <span>National Youth Climate Grant &amp; Reward System</span>
+  <nav class="footer__links">
+    <a href="problem.html">Problem</a>
+    <a href="solution.html">Solution</a>
+    <a href="impact.html">Impact</a>
+  </nav>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
